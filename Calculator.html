@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap" rel="stylesheet">
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Ubuntu:wght@300&display=swap');
+body {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  width: 100%;
+  font-family: 'Roboto', sans-serif; 
+}
+
+.button{
+  width: 76px;
+  padding: 18px;
+  margin: -3px 3px;
+  border: none;
+  cursor: pointer;
+  border-radius: 50px;
+  font-size: 30px;
+  box-shadow: -5px -5px 12px #ffffff, 5px 5px 12px rgba(0,0, 0,0.16);
+ 
+}
+
+.button:active{
+    background-color: rgb(170, 170, 170);
+   
+}
+
+.Clear{
+    width: 239px;
+    text-align: center;
+    letter-spacing: 11px;
+}
+
+.row{
+  margin: 8px 0;
+}
+
+.row input{
+    background-color: #ecf0f3;
+    width: 283px;
+    font-size: 28px;
+    margin: 11px 0px;
+    padding: 11px 24px;
+    border: none;
+    border-radius: 51px;
+    height: 50px;
+    box-shadow: inset -5px -5px 12px #ffffff, inset 5px 5px 12px rgba(0,0, 0,0.16);
+}
+
+.container{
+    margin: -16px auto;
+    padding: 15px;
+    width: 403px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 30px;
+    background-color: #ecf0f3;
+    box-shadow: inset 5px 5px 12px #ffffff, 5px 5px 12px rgba(0,0, 0,0.16);
+}
+
+.text-center{
+    text-align: center;
+    font-family: 'Rubik Dirt', cursive;
+    font-size: 53px;
+  }
+  
+  </style>
+</head>
+
+<body>
+  <h1 class="text-center">Calculator</h1>
+  <div class="container">
+    <div class="row">
+      <input class="input" type="text"/>
+    </div>
+    <div class="row">
+      <button class="button Clear">CLEAR</button>
+      <!-- <button class="button">%</button>
+      <button class="button">M+</button> -->
+      <button class="button">%</button>
+    </div>
+    <div class="row">
+      <button class="button">7</button>
+      <button class="button">8</button>
+      <button class="button">9</button>
+      <button class="button">/</button>
+    </div>
+    <div class="row">
+      <button class="button">4</button>
+      <button class="button">5</button>
+      <button class="button">6</button>
+      <button class="button">+</button>
+    </div>
+    <div class="row">
+      <button class="button">1</button>
+      <button class="button">2</button>
+      <button class="button">3</button>
+      <button class="button">-</button>
+    </div>
+    <div class="row">
+      <button class="button">0</button>
+      <button class="button">.</button>
+      <button class="button">=</button>
+      <button class="button">*</button>
+    </div>
+  </div>
+
+  <script>
+    let string = "";
+    let buttons = document.querySelectorAll('.button');
+    Array.from(buttons).forEach((button)=>{
+    button.addEventListener('click', (e)=>{
+    if(e.target.innerHTML == '=' ){
+        if(string!=""){
+        string = eval(string);
+        document.querySelector('.input').value = string;
+    }
+}
+    else if(e.target.innerHTML == 'CLEAR'){
+      string = ""
+      document.querySelector('.input').value = string;
+    }
+    else{ 
+    console.log(e.target)
+    string = string + e.target.innerHTML;
+    document.querySelector('.input').value = string;
+    }
+    // else if(input.value == null || e.target.innerHTML == '='){
+    // string = "";
+    // document.querySelector('input').value = string;
+    // }
+    })
+    })
+  </script>
+
+</body>
+
+</html>
